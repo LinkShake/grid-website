@@ -3,12 +3,15 @@ body {
   padding: 0;
 }
 
-.contenitore {
+.container {
   display: grid;
+  padding: 0 !important;
+  margin: 0 !important;
   /* height: 100vh; */
   overflow-y: auto;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-auto-rows: 3fr 2fr 10fr 10fr 3fr;
+  /* grid-auto-rows: max-content; */
   /* grid-template-rows: auto; */
   grid-template-areas:
     "header header header header header header"
@@ -18,14 +21,26 @@ body {
     "footer footer footer footer footer footer";
 }
 
+.controls-container button {
+  transition: 0.2s;
+}
+
+.controls-container button:hover {
+  opacity: 0.75;
+}
+
+.container * {
+  margin: 0;
+}
+
 @media (min-width: 650px) {
-  .contenitore {
+  .container {
     height: 100vh;
   }
 }
 
 @media (max-width: 900px) {
-  .contenitore {
+  .container {
     grid-template-areas:
       "header header header header header header"
       "nav nav nav nav nav nav"
@@ -36,13 +51,15 @@ body {
 }
 
 @media (max-width: 900px) and (orientation: landscape) {
-  .contenitore {
+  .container {
     grid-auto-rows: 8fr 8fr 20fr 10fr auto;
   }
 }
 
 @media (max-width: 650px) {
-  .contenitore {
+  .container {
+    /* max-height: 100vh;
+    height: 100vh; */
     grid-template-areas:
       "header header header header header header"
       "nav nav nav nav nav nav"
@@ -50,41 +67,45 @@ body {
       "aside_top aside_top aside_top aside_top aside_top aside_top"
       "aside_bottom aside_bottom aside_bottom aside_bottom aside_bottom aside_bottom"
       "footer footer footer footer footer footer";
-    grid-auto-rows: 10fr 10fr 140fr 150fr 50fr auto;
+    /* grid-auto-rows: 10fr 10fr 140fr 150fr 50fr auto; */
+    grid-auto-rows: 8rem 5rem 80vw 100vw 10rem 5rem;
+    /* grid-template-rows: 10fr 10fr 140fr 150fr 50fr auto; */
+    /* grid-auto-rows: auto; */
   }
 }
 
 header {
   grid-area: header;
-  max-height: 3fr;
+  /* max-height: 3fr; */
   background-color: blue;
 }
 
 nav {
   grid-area: nav;
-  max-height: 3fr;
+  /* max-height: 3fr; */
   background-color: aqua;
 }
 
 main {
   grid-area: main;
-  max-height: 10fr;
+  /* max-height: 10fr; */
+  background-color: black;
 }
 
 .aside_top {
   grid-area: aside_top;
-  max-height: 5fr;
-  background-color: coral;
+  /* max-height: 5fr; */
+  /* background-color: coral; */
 }
 
 .aside_bottom {
   grid-area: aside_bottom;
-  max-height: 5fr;
+  /* max-height: 5fr; */
   background-color: cornflowerblue;
 }
 
 footer {
   grid-area: footer;
-  max-height: 3fr;
+  /* max-height: 3fr; */
   background-color: darkorange;
 }

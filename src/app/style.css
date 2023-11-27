@@ -1,6 +1,13 @@
+html,
 body {
-  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
+  /* overflow: hidden !important; */
+  overflow-y: auto;
   padding: 0;
+  margin: 0;
 }
 
 .container {
@@ -21,6 +28,10 @@ body {
     "footer footer footer footer footer footer";
 }
 
+.container * {
+  color: #fcd34d;
+}
+
 .controls-container button {
   transition: 0.2s;
 }
@@ -39,6 +50,12 @@ body {
     height: 100vh;
     gap: 2em;
     padding: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    gap: 2em;
   }
 }
 
@@ -85,7 +102,9 @@ body {
 
 @media (orientation: landscape) and (max-height: 650px) {
   .container {
-    grid-auto-rows: 8rem 5rem 30rem 20rem 20rem 5rem;
+    grid-auto-rows: 8rem 5rem 30rem 30rem 5rem;
+    /* background-color: blue; */
+    height: fit-content;
   }
 }
 
@@ -99,6 +118,7 @@ header {
   justify-content: center;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 header h1 {
@@ -106,13 +126,67 @@ header h1 {
   margin: 0;
   font-family: "Arial";
   font-weight: bolder;
+  color: #fcd34d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-shadow: 1px 1px yellow;
   /* border: 2px solid red; */
+}
+
+#U {
+  animation: light 0.5s infinite linear reverse;
+}
+
+#E {
+  animation: light 0.75s infinite linear reverse;
+}
+
+#u {
+  animation: light 0.25s infinite linear reverse;
+}
+
+#T {
+  animation: bulb 2s infinite linear;
+}
+
+#l {
+  animation: light 0.2s infinite linear;
+}
+
+@keyframes bulb {
+  0% {
+    color: white;
+  }
+
+  50% {
+    color: yellow;
+  }
+
+  100% {
+    color: white;
+  }
+}
+
+@keyframes light {
+  from {
+    color: white;
+  }
+
+  to {
+    color: yellow;
+  }
+}
+
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 1.75rem;
+  }
 }
 
 nav {
   grid-area: nav;
   /* max-height: 3fr; */
-  background-color: aqua;
+  /* background-color: aqua; */
   max-width: inherit;
   overflow: hidden;
 }
@@ -130,6 +204,9 @@ nav {
   flex: 1 0 auto;
   width: 100%;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  /* text-shadow: 2px 2px yellow; */
 }
 
 @keyframes news {
@@ -164,14 +241,19 @@ main {
   padding: 15px;
   text-align: center;
   position: relative;
-  color: deeppink;
   font-weight: bold;
+  text-shadow: 2px 2px black;
 }
 
 footer {
   grid-area: footer;
   /* max-height: 3fr; */
-  background-color: darkorange;
+  /* background-color: darkorange; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: 2px 2px red;
 }
 
 /* .carousel-el {
@@ -204,8 +286,18 @@ footer {
 }
 
 .carousel-btn:not(:disabled) {
-  border: 1px solid black;
+  border: 4px solid #fcd34d;
+  color: #fcd34d;
+  background-color: black;
+  font-weight: bold !important;
   cursor: pointer;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.25;
+  border: 4px solid #fcd34d;
+  color: #fcd34d;
+  background-color: black;
 }
 
 .aside_top:before {
@@ -248,6 +340,45 @@ footer {
   background-repeat: no-repeat;
 }
 
+/* header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.creativefabrica.com/wp-content/uploads/2023/04/07/Torn-Paper-Vintage-Distressed-Junk-Journal-Background-66479112-1.png");
+  z-index: -1;
+
+  filter: blur(5px);
+  -moz-filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -o-filter: blur(5px);
+} */
+
+.bg-image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://d3kjluh73b9h9o.cloudfront.net/original/3X/e/b/eb79c44f151f24cc3b6cec8864a695bc19b70bbf.jpeg");
+
+  /* filter: blur(8px);
+  -moz-filter: blur(8px);
+  -webkit-filter: blur(8px);
+  -o-filter: blur(8px); */
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-el {
+  text-shadow: 2px 2px black;
+}
+
 .carousel-el:before {
   content: "";
   position: absolute;
@@ -267,4 +398,24 @@ footer {
   -moz-transition: all 2s linear;
   -webkit-transition: all 2s linear;
   -o-transition: all 2s linear; */
+}
+
+#more-link {
+  color: #fcd34d;
+  text-shadow: 2px 2px red;
+  animation: bounce 2s infinite linear;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
 }

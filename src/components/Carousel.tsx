@@ -91,7 +91,6 @@ export const Carousel = () => {
                 display: "flex",
                 alignItems: "center",
 
-                color: "white",
                 // fontSize: "20px",
                 textAlign: "center",
                 // fontWeight: "bold",

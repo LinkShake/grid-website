@@ -1,143 +1,62 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Carousel } from "@/components/Carousel";
 import "./style.css";
-import dynamic from "next/dynamic";
-import {
-  IconMicrophone,
-  IconMicrophoneOff,
-  IconVideo,
-  IconVideoOff,
-} from "@tabler/icons-react";
 
 export default function Home() {
-  const [geoLocation, setGeoLocation] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
-  const [constraints, setConstraints] = useState({
-    video: true,
-    audio: true,
-  });
-  const cb = (stream: any) => {
-    const video = document.querySelector("video");
-    video.srcObject = stream;
-    video.onloadedmetadata = () => {
-      video.play();
-    };
-  };
-
-  const Map = useMemo(
-    () =>
-      dynamic(() => import("@/components/Map/Map"), {
-        loading: () => <p>Loading...</p>,
-        ssr: false,
-      }),
-    []
-  );
-
-  useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then((stream) => cb(stream))
-      .catch((err) => {
-        if (
-          err.message ===
-          "Failed to execute 'getUserMedia' on 'MediaDevices': At least one of audio and video must be requested"
-        )
-          document.querySelector("video").srcObject = null;
-      });
-  }, [constraints]);
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((data) => {
-      setGeoLocation(data.coords);
-    });
-  }, []);
-
   return (
     <div className="container">
-      <header>HEADER</header>
-      <nav>NAV</nav>
+      <header>
+        <h1>The Unreal Engine Journal</h1>
+      </header>
+      <nav>
+        <div id="news-container">
+          <h2>
+            Official: CD Projekt Red is using UE5 for all of its up coming games
+          </h2>
+          <h2>
+            Unreal Engine 5.2 is out: the new procedural generation tool is
+            available to all developers
+          </h2>
+          <h2>UE5 is now industry standard aligned for cinematics </h2>
+        </div>
+      </nav>
       <main
         style={{
+          overflow: "hidden",
           position: "relative",
         }}
       >
-        <video
-          src=""
-          style={{
-            objectFit: "fill",
-            height: "100%",
-            width: "100%",
-            position: "absolute",
-          }}
-        ></video>
-        <div
-          style={{
-            display: "flex",
-            position: "absolute",
-            bottom: "10px",
-            width: "100%",
-            // border: "2px solid red",
-            height: "3rem",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "20px",
-          }}
-        >
-          <button
-            style={{
-              zIndex: 101,
-              backgroundColor: constraints.video ? "red" : "gray",
-              height: "100%",
-              aspectRatio: "1 / 1",
-              borderRadius: "50%",
-              border: "none",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              setConstraints({
-                ...constraints,
-                video: !constraints.video,
-              });
-            }}
-          >
-            {constraints.video ? (
-              <IconVideoOff size={20} />
-            ) : (
-              <IconVideo size={20} />
-            )}
-          </button>
-          <button
-            style={{
-              zIndex: 101,
-              backgroundColor: constraints.audio ? "red" : "gray",
-              height: "100%",
-              aspectRatio: "1 / 1",
-              borderRadius: "50%",
-              border: "none",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              setConstraints({
-                ...constraints,
-                audio: !constraints.audio,
-              });
-            }}
-          >
-            {constraints.audio ? (
-              <IconMicrophoneOff size={20} />
-            ) : (
-              <IconMicrophone size={20} />
-            )}
-          </button>
-        </div>
+        <Carousel />
       </main>
       <div className="aside_top">
-        <Map coords={[geoLocation.latitude, geoLocation.longitude]} />
+        <h3>God of War (2018)</h3>
+        <br />
+        <p>
+          In 2018, Santa Monica Studio redefined the God of War franchise with a
+          Norse mythology twist on the PlayStation 4. Kratos, the former Greek
+          god, embarks on a gripping journey with his son, Atreus. The game
+          impresses with its seamless narrative, intense combat, stunning
+          visuals, and a one-shot camera style that enhances the cinematic
+          experience. The father-son dynamic and Kratos' personal growth make
+          God of War (2018) a standout in the action-adventure genre.
+        </p>
       </div>
-      <div className="aside_bottom">ASIDE BOTTOM</div>
+      <div className="aside_bottom">
+        <h3>Hellblade: Senua's Sacrifice</h3>
+        <br />
+        <p>
+          Released in 2017, Hellblade: Senua's Sacrifice, by Ninja Theory,
+          offers a unique action-adventure experience. Following the journey of
+          Senua, a Celtic warrior with psychosis, the game delves into Norse
+          mythology as she battles through the Viking underworld. Hellblade
+          stands out for its authentic portrayal of mental illness, using
+          binaural audio and striking visuals to depict Senua's hallucinations.
+          The narrative, infused with psychological horror, creates an immersive
+          and emotionally resonant gaming experience that leaves a lasting
+          impact.
+        </p>
+      </div>
       <footer>FOOTER</footer>
     </div>
   );

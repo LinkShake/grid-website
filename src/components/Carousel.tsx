@@ -74,12 +74,6 @@ export const Carousel = () => {
       {paragraphs.map((text, idx) => {
         return (
           <div key={idx}>
-            {/* <div
-              className="bg-image"
-              style={{
-                backgroundImage: `url(${calculateBgImg(idx)})`,
-              }}
-            ></div> */}
             <div
               className="carousel-el"
               style={{

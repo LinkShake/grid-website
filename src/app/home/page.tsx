@@ -216,7 +216,8 @@ export default function Home() {
                 top: "50%",
                 transform: "translate(-50%, -50%)",
                 zIndex: 101,
-                backgroundColor: "red",
+                backgroundColor: "black",
+                boxShadow: "0.3em .2em 1em .5em  #fcd34d",
               }}
             >
               <ul>

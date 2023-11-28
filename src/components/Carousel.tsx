@@ -27,6 +27,7 @@ export const Carousel = () => {
     "The Megascans library is the cornerstone of Quixel's offerings, providing an extensive and ever-expanding array of assets. From photorealistic surface scans to detailed 3D models, Megascans empowers creators to build immersive and realistic environments. The library covers a broad spectrum of materials, including rocks, vegetation, architecture, and much more, making it a go-to solution for artists seeking top-tier assets for their productions.",
   ];
   const [activeParagraph, setActiveParagraph] = useState(0);
+  const [visibleVideo, setVisibleVideo] = useState(-1);
   const [verse, setVerse] = useState<"right" | "left">("right");
   const handleBtn = (action: "prev" | "next") => {
     setActiveParagraph(
@@ -55,6 +56,27 @@ export const Carousel = () => {
     }
   };
 
+  const calculateVideo = (idx: number) => {
+    switch (idx) {
+      case 0:
+        return "https://www.youtube.com/embed/qC5KtatMcUw?si=X_ZA_tOLVcDPjlAZ";
+      case 1:
+        return "https://www.youtube.com/embed/04k9JDx-KTM?si=t_HTi-cFKdBae9mX";
+      case 2:
+        return "https://www.youtube.com/embed/paNTx_uviWg?si=J34SKZ6tK6iXqpRk";
+      case 3:
+        return "https://www.youtube.com/embed/Xw9QEMFInYU?si=T2yF19izcU2oMFzx";
+      case 4:
+        return "https://www.youtube.com/embed/ADIldob0Sxg?si=LoAS02OJIaAVetl6";
+      case 5:
+        return "https://www.youtube.com/embed/sfMG746hk3k?si=XnogA9k9Pimqq0_A";
+      case 6:
+        return "https://www.youtube.com/embed/ca2ME4Wy0eM?si=MR4BxRleiXoOJ0QF";
+      default:
+        return "";
+    }
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (activeParagraph >= 0 && activeParagraph < paragraphs.length - 1) {
@@ -72,6 +94,12 @@ export const Carousel = () => {
     }, 5 * Math.pow(10, 3));
 
     return () => clearInterval(interval);
+  });
+
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && visibleVideo !== -1) setVisibleVideo(-1);
+    });
   });
 
   return (
@@ -105,9 +133,60 @@ export const Carousel = () => {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
               }}
+              onClick={() => setVisibleVideo(idx)}
             >
               {text}
             </div>
+            {visibleVideo === idx && (
+              <>
+                <div
+                  className="video-overlay"
+                  style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0, 0, 0, 0.4)",
+                    backdropFilter: " blur(4px)",
+                    zIndex: 100,
+                    transition: "all 0.5s",
+                  }}
+                  onClick={() => setVisibleVideo(-1)}
+                ></div>
+
+                <div
+                  style={{
+                    position: "absolute",
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    top: 0,
+                    left: 0,
+                  }}
+                >
+                  <iframe
+                    id="video"
+                    src={calculateVideo(idx)}
+                    title="YouTube video player"
+                    // frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    style={{
+                      position: "fixed",
+                      left: "50%",
+                      top: "50%",
+                      transform: "translate(-50%, -50%)",
+                      width: "65rem",
+                      aspectRatio: "16 / 9",
+                      zIndex: 101,
+                    }}
+                  ></iframe>
+                </div>
+              </>
+            )}
           </div>
         );
       })}

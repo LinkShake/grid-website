@@ -10,7 +10,6 @@ body {
   margin: 0;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  transition: all 0.2s;
 }
 
 html::-webkit-scrollbar,
@@ -78,6 +77,12 @@ body::-webkit-scrollbar {
   }
 }
 
+@media (max-width: 1080px) {
+  #video {
+    width: 95vw !important;
+  }
+}
+
 /* @media (max-width: 900px) and (orientation: landscape) {
   .container {
     grid-auto-rows: 8fr 8fr 20fr 10fr auto;
@@ -115,6 +120,10 @@ body::-webkit-scrollbar {
     /* background-color: blue; */
     height: fit-content;
   }
+
+  /* #video {
+    height: 98vh;
+  } */
 }
 
 header {
@@ -558,4 +567,8 @@ footer {
   100% {
     transform: translateY(0%);
   }
+}
+
+#resources-btn:hover {
+  opacity: 0.75;
 }

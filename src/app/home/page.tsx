@@ -2,13 +2,15 @@
 
 import { Carousel } from "@/components/Carousel";
 import "../style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [shouldFirstContainerAnimate, setShouldFirstContainerAnimate] =
     useState(true);
   const [shouldSecondContainerAnimate, setShouldSecondContainerAnimate] =
     useState(true);
+
+  const [resourcesModalOpen, setResourcesModalOpen] = useState(false);
 
   const onLongPress = (src: "first" | "second") => {
     console.log("long press");
@@ -20,6 +22,12 @@ export default function Home() {
     if (src === "first") setShouldFirstContainerAnimate(true);
     else setShouldSecondContainerAnimate(true);
   };
+
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setResourcesModalOpen(false);
+    });
+  });
 
   return (
     <>
@@ -161,16 +169,91 @@ export default function Home() {
               LinkShake
             </a>
           </p>
-          <p>
-            <a
-              href="https://www.unrealengine.com/en-US
-            "
-              target="_blank"
-            >
-              Unreal Engine site
-            </a>
-          </p>
+          <button
+            style={{
+              backgroundColor: "black",
+              boxShadow: ".1em .1em .1em 2px #fcd34d",
+              border: "none",
+              height: "2rem",
+              width: "6rem",
+              borderRadius: "7.5px",
+              cursor: "pointer",
+              transition: ".2s",
+            }}
+            id="resources-btn"
+            onClick={() => setResourcesModalOpen(true)}
+          >
+            Resources
+          </button>
         </footer>
+        {resourcesModalOpen && (
+          <>
+            <div
+              id="learning-resources-overlay"
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(0, 0, 0, 0.4)",
+                backdropFilter: " blur(4px)",
+                zIndex: 100,
+                transition: "all 0.5s",
+              }}
+              onClick={() => setResourcesModalOpen(false)}
+              // onLoad={() => {
+              //   console.log("i am loaded");
+              // }}
+            ></div>
+            <div
+              id="learning-resources"
+              style={{
+                width: "20rem",
+                height: "40rem",
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 101,
+                backgroundColor: "red",
+              }}
+            >
+              <ul>
+                <li>
+                  <a href="https://docs.unrealengine.com/5.3/en-US/">
+                    Unreal Engine docs
+                  </a>
+                </li>
+                <li>
+                  <a href="https://dev.epicgames.com/community/unreal-engine/learning">
+                    Epic dev portal
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/@solomon-gumball">
+                    Interesting devlogs
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/@PrismaticaDev">
+                    Great overall UE channel
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/@JoshToonen">
+                    UE5 Cinematics channel
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/watch?v=ZF7Vwc8L1ok">
+                    10 UE5 tips
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

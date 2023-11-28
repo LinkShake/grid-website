@@ -22,6 +22,9 @@ export const Carousel = () => {
 
     // Lumen
     "Lumen, another feature of Unreal Engine 5, introduces dynamic global illumination with real-time global illumination and reflections. Lumen adapts to changes in the environment, providing a more immersive and realistic lighting experience. This technology enhances the visual quality of scenes by simulating how light interacts with surfaces in real time. Lumen's dynamic nature allows developers to create visually stunning environments with realistic lighting conditions, further solidifying Unreal Engine's status as a powerhouse in the world of game development and beyond.",
+
+    // Megascan/Quixel
+    "The Megascans library is the cornerstone of Quixel's offerings, providing an extensive and ever-expanding array of assets. From photorealistic surface scans to detailed 3D models, Megascans empowers creators to build immersive and realistic environments. The library covers a broad spectrum of materials, including rocks, vegetation, architecture, and much more, making it a go-to solution for artists seeking top-tier assets for their productions.",
   ];
   const [activeParagraph, setActiveParagraph] = useState(0);
   const [verse, setVerse] = useState<"right" | "left">("right");
@@ -45,6 +48,8 @@ export const Carousel = () => {
         return "https://docs.unrealengine.com/5.0/Images/designing-visuals-rendering-and-graphics/rendering-optimization/nanite/nanite-datasize-nanitemeshwithnormal.jpg";
       case 5:
         return "https://docs.unrealengine.com/5.0/Images/building-virtual-worlds/lighting-and-shadows/global-illumination/lumen/TechOverview/lumen-far-field.jpg";
+      case 6:
+        return "https://i.ytimg.com/vi/5ZjwwtMlNCU/maxresdefault.jpg";
       default:
         return "";
     }

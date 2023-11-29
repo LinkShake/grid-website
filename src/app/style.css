@@ -121,6 +121,18 @@ body::-webkit-scrollbar {
     height: fit-content;
   }
 
+  #learning-resources {
+    max-height: 88vh;
+    height: 88vh !important;
+    overflow-y: auto;
+    box-shadow: 0.15em 0.1em 0.5em 0.25em #fcd34d !important;
+  }
+
+  #sources-ul {
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+
   /* #video {
     height: 98vh;
   } */

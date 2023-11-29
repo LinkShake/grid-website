@@ -5,6 +5,45 @@ import "../style.css";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const resources = [
+    {
+      text: "Unreal Engine docs",
+      link: "https://docs.unrealengine.com/5.3/en-US/",
+      hiddenContent: "The official Unreal Engine documentation site",
+    },
+    {
+      text: "Epic dev portal",
+      link: "https://dev.epicgames.com/community/unreal-engine/learning",
+      hiddenContent:
+        "The Epic Games developer portal with planty of learning material both from community and developers",
+    },
+    {
+      text: "Interesting devlogs",
+      link: "https://www.youtube.com/@solomon-gumball",
+      hiddenContent:
+        "A small channel that makes devlogs about the development of a skiing based game with UE5",
+    },
+    {
+      text: "Great overall UE channel",
+      link: "https://www.youtube.com/@PrismaticaDev",
+      hiddenContent: "A fantastic channel that makes content about UE4/UE5",
+    },
+    {
+      text: "UE Cinematics channel",
+      link: "https://www.youtube.com/@JoshToonen",
+      hiddenContent:
+        "A channel about creating cinematics and VFX in UE5 from a guy who worked on films such as 'Ready Player One' and 'Avatar the way of water'",
+    },
+    {
+      text: "10 UE5 tips",
+      link: "https://www.youtube.com/watch?v=ZF7Vwc8L1ok",
+      hiddenContent:
+        "Fantastic video that shows 10 usefull and easy tricks to make better content in UE5",
+    },
+  ];
+
+  const [activeHiddenContent, setActiveHiddenContent] = useState(-1);
+
   const [shouldFirstContainerAnimate, setShouldFirstContainerAnimate] =
     useState(true);
   const [shouldSecondContainerAnimate, setShouldSecondContainerAnimate] =
@@ -218,39 +257,38 @@ export default function Home() {
                 zIndex: 101,
                 backgroundColor: "black",
                 boxShadow: "0.3em .2em 1em .5em  #fcd34d",
+                paddingTop: "20px",
               }}
             >
-              <ul>
-                <li>
-                  <a href="https://docs.unrealengine.com/5.3/en-US/">
-                    Unreal Engine docs
-                  </a>
-                </li>
-                <li>
-                  <a href="https://dev.epicgames.com/community/unreal-engine/learning">
-                    Epic dev portal
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/@solomon-gumball">
-                    Interesting devlogs
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/@PrismaticaDev">
-                    Great overall UE channel
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/@JoshToonen">
-                    UE5 Cinematics channel
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/watch?v=ZF7Vwc8L1ok">
-                    10 UE5 tips
-                  </a>
-                </li>
+              <ul
+                style={{
+                  listStyle: "none",
+                }}
+                id="sources-ul"
+              >
+                {resources.map(({ text, link, hiddenContent }, idx) => {
+                  return (
+                    <li key={idx}>
+                      <div className="source-div">
+                        <a href={link}>{text}</a>
+                        <button
+                          className="source-btn"
+                          onClick={() => {
+                            setActiveHiddenContent(
+                              activeHiddenContent === idx ? -1 : idx
+                            );
+                          }}
+                        >
+                          {activeHiddenContent === idx ? "-" : "+"}
+                        </button>
+                      </div>
+                      {activeHiddenContent === idx && (
+                        <div className="hidden-content">{hiddenContent}</div>
+                      )}
+                      <br />
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </>

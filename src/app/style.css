@@ -573,3 +573,29 @@ footer {
 #resources-btn:hover {
   opacity: 0.75;
 }
+
+#sources-ul {
+  /* border: 2px solid blue; */
+  margin: 0;
+  padding: 10px;
+}
+
+.source-div {
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid red; */
+  margin: 0;
+  padding: 0;
+}
+
+.source-btn {
+  background-color: black;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.source-btn:hover {
+  opacity: 0.75;
+}

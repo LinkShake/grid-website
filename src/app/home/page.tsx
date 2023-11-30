@@ -133,19 +133,20 @@ export default function Home() {
                 Atreus. The game impresses with its seamless narrative, intense
                 combat, stunning visuals, and a one-shot camera style that
                 enhances the cinematic experience. The father-son dynamic and
-                Kratos' personal growth make God of War (2018) a standout in the
-                action-adventure genre.
+                {"Kratos'"} personal growth make God of War (2018) a standout in
+                the action-adventure genre.
               </p>
             </div>
             <div id="second-top">
               <h3>Batman Arkham Knight</h3>
               <br />
               <p>
-                Batman: Arkham Knight, the final chapter in Rocksteady Studios'
+                Batman: Arkham Knight, the final chapter in Rocksteady{" "}
+                {"Studios'"}
                 Arkham series, is a 2015 video game set in a besieged Gotham
                 City. Players embody Batman, navigating intense combat and
                 utilizing the iconic Batmobile to thwart the enigmatic Arkham
-                Knight's plans. The gripping narrative unravels the mystery
+                {"Knight's"} plans. The gripping narrative unravels the mystery
                 behind the Arkham Knight, delivering a visually stunning and
                 immersive experience that concludes the acclaimed series.
               </p>
@@ -172,16 +173,16 @@ export default function Home() {
             onTouchEnd={() => onLongPressEnd("second")}
           >
             <div id="first-bottom">
-              <h3>Hellblade: Senua's Sacrifice</h3>
+              <h3>Hellblade: {"Senua's"} Sacrifice</h3>
               <br />
               <p>
-                Released in 2017, Hellblade: Senua's Sacrifice, by Ninja Theory,
-                offers a unique action-adventure experience. Following the
-                journey of Senua, a Celtic warrior with psychosis, the game
+                Released in 2017, Hellblade:{" Senua's"} Sacrifice, by Ninja
+                Theory, offers a unique action-adventure experience. Following
+                the journey of Senua, a Celtic warrior with psychosis, the game
                 delves into Norse mythology as she battles through the Viking
                 underworld. Hellblade stands out for its authentic portrayal of
                 mental illness, using binaural audio and striking visuals to
-                depict Senua's hallucinations. The narrative, infused with
+                depict {"Senua's"} hallucinations. The narrative, infused with
                 psychological horror, creates an immersive and emotionally
                 resonant gaming experience that leaves a lasting impact.
               </p>
@@ -190,12 +191,14 @@ export default function Home() {
               <h3>The day before</h3>
               <br />
               <p>
-                "The Day Before" is a 2022 survival game by FNTASTIC, plunging
-                players into a post-apocalyptic world teeming with zombies.
-                Navigating the desolate landscape, scavenging resources, and
-                facing both the undead and fellow survivors, players must
-                cooperate to endure the harsh realities of the collapse. With
-                realistic graphics and intense gameplay, "The Day Before"
+                {'"The Day Before"'} is a 2022 survival game by FNTASTIC,
+                plunging players into a post-apocalyptic world teeming with
+                zombies. Navigating the desolate landscape, scavenging
+                resources, and facing both the undead and fellow survivors,
+                players must cooperate to endure the harsh realities of the
+                collapse. With realistic graphics and intense gameplay,{" "}
+                {`"The Day
+                Before"`}{" "}
                 delivers a gripping and visually immersive survival experience.
               </p>
             </div>
@@ -256,7 +259,7 @@ export default function Home() {
                 transform: "translate(-50%, -50%)",
                 zIndex: 101,
                 backgroundColor: "black",
-                boxShadow: "0.3em .2em 1em .5em  #fcd34d",
+                boxShadow: "0.15em .1em .5em .25em  #fcd34d",
                 paddingTop: "20px",
               }}
             >
@@ -268,9 +271,22 @@ export default function Home() {
               >
                 {resources.map(({ text, link, hiddenContent }, idx) => {
                   return (
-                    <li key={idx}>
+                    <li
+                      key={idx}
+                      onMouseEnter={() => {
+                        setActiveHiddenContent(idx);
+                      }}
+                      onMouseLeave={() => {
+                        setActiveHiddenContent(-1);
+                      }}
+                      style={{
+                        cursor: "pointer",
+                      }}
+                    >
                       <div className="source-div">
-                        <a href={link}>{text}</a>
+                        <a href={link} target="_blank">
+                          {text}
+                        </a>
                         <button
                           className="source-btn"
                           onClick={() => {

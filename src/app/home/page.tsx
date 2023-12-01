@@ -90,8 +90,8 @@ export default function Home() {
               games
             </h2>
             <h2>
-              Unreal Engine 5.2 is out: the new procedural generation tool is
-              available to all developers
+              Unreal Engine 5.2 is out: the new procedural generation framework
+              is available to all developers
             </h2>
             <h2>UE5 is now industry standard aligned for cinematics </h2>
           </div>

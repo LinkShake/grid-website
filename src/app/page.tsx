@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 
 export default function Landing() {
   const [soundPlayable, setSoundPlayable] = useState(false);
-  const [navigatorReady, setNavigatorReady] = useState(window !== undefined);
+  const [navigatorReady, setNavigatorReady] = useState(
+    typeof navigator !== "undefined"
+  );
   const isMobile = () => {
     if (navigatorReady) {
       const regex =
@@ -27,7 +29,7 @@ export default function Landing() {
   });
 
   useEffect(() => {
-    setNavigatorReady(window !== undefined);
+    setNavigatorReady(typeof navigator !== "undefined");
   }, [navigatorReady]);
 
   return (

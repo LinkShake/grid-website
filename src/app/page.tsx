@@ -6,10 +6,13 @@ import { useEffect, useState } from "react";
 
 export default function Landing() {
   const [soundPlayable, setSoundPlayable] = useState(false);
+  const [navigatorReady, setNavigatorReady] = useState(navigator !== undefined);
   const isMobile = () => {
-    const regex =
-      /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-    return regex.test(navigator.userAgent) || window.innerWidth <= 1366;
+    if (navigatorReady) {
+      const regex =
+        /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      return regex.test(navigator.userAgent) || window.innerWidth <= 1366;
+    }
   };
 
   useEffect(() => {
@@ -22,6 +25,10 @@ export default function Landing() {
         new Audio("/v8_sound.mp3").play();
     });
   });
+
+  useEffect(() => {
+    setNavigatorReady(navigator !== undefined);
+  }, [navigatorReady]);
 
   return (
     <>

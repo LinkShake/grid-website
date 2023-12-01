@@ -11,6 +11,12 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
   background-color: black !important;
+  /* z-index: -2; */
+  /* background-image: ; */
+  background-image: url("https://d3kjluh73b9h9o.cloudfront.net/original/3X/e/b/eb79c44f151f24cc3b6cec8864a695bc19b70bbf.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 html::-webkit-scrollbar,

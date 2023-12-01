@@ -10,6 +10,7 @@ body {
   margin: 0;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  background-color: black !important;
 }
 
 html::-webkit-scrollbar,

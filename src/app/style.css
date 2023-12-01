@@ -5,18 +5,23 @@ body {
   max-height: 100vh;
   max-width: 100vw;
   /* overflow: hidden !important; */
-  overflow-y: auto;
+  overflow: auto;
   padding: 0;
   margin: 0;
   -ms-overflow-style: none;
   scrollbar-width: none;
   background-color: black !important;
+  /* border: 2px solid red; */
   /* z-index: -2; */
   /* background-image: ; */
   background-image: url("https://d3kjluh73b9h9o.cloudfront.net/original/3X/e/b/eb79c44f151f24cc3b6cec8864a695bc19b70bbf.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+body {
+  touch-action: auto;
 }
 
 html::-webkit-scrollbar,
@@ -27,9 +32,14 @@ body::-webkit-scrollbar {
 .container {
   display: grid;
 
+  /* border: 2px solid red; */
+
   /* margin: 0 !important; */
   /* height: 100vh; */
-  overflow-y: auto;
+  /* border: 2px solid blue; */
+  overflow: auto !important;
+  max-height: 100vh !important;
+  max-width: 100vw !important;
   /* max-height: 100vh !important;
   max-width: 100vw !important; */
   /* height: fit-content !important; */
@@ -120,6 +130,18 @@ body::-webkit-scrollbar {
     grid-auto-rows: 5rem 5rem 120vw 22rem 22rem 5rem;
     /* grid-template-rows: 10fr 10fr 140fr 150fr 50fr auto; */
     /* grid-auto-rows: auto; */
+  }
+
+  #first-top,
+  #first-bottom,
+  #second-top,
+  #second-bottom {
+    height: fit-content !important;
+  }
+
+  #news-container h2 {
+    width: fit-content !important;
+    /* border: 2px solid red; */
   }
 }
 
@@ -274,6 +296,13 @@ nav {
   height: 100%;
 }
 
+@media (max-width: 650px) {
+  #news-container {
+    animation: news-mobile 40s infinite linear;
+    animation-delay: 2s;
+  }
+}
+
 #news-container h2 {
   flex: 1 0 auto;
   width: 100%;
@@ -293,6 +322,16 @@ nav {
   }
 }
 
+@keyframes news-mobile {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-620vw);
+  }
+}
+
 main {
   grid-area: main;
   /* max-height: 10fr; */
@@ -303,6 +342,7 @@ main {
   grid-area: aside_top;
   /* max-height: 5fr; */
   /* background-color: coral; */
+  /* border: 2px solid red; */
 }
 
 .aside_bottom {

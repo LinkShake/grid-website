@@ -389,9 +389,9 @@ footer {
   position: inherit;
 } */
 
-.carousel-el:hover {
+/* .carousel-el:hover {
   opacity: 0.8;
-}
+} */
 
 .carousel-btn {
   aspect-ratio: 1 / 1;

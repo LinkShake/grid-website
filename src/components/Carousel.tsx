@@ -123,6 +123,7 @@ export const Carousel = () => {
                 overflow: "hidden",
                 display: "flex",
                 alignItems: "center",
+                cursor: "pointer",
 
                 // fontSize: "20px",
                 textAlign: "center",
@@ -132,6 +133,7 @@ export const Carousel = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
+                transition: ".2s",
               }}
               onClick={() => setVisibleVideo(idx)}
             >

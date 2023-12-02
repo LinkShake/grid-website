@@ -430,7 +430,8 @@ footer {
   top: 0;
   left: 0;
   width: 100%;
-  height: fit-content !important;
+  /* height: fit-content !important; */
+  height: max(fit-content, 100%);
   min-height: fit-content;
   /* height: 100%; */
 }
@@ -462,7 +463,8 @@ footer {
   width: 100%;
   min-height: fit-content;
   /* height: 100%; */
-  height: fit-content !important;
+  /* height: fit-content !important; */
+  height: max(fit-content, 100%);
   transform: translateY(-110%) !important;
 }
 
@@ -471,10 +473,10 @@ footer {
   top: 0;
   left: 0;
   width: 100%;
-  /* height: max(fit-content, 100%); */
+  height: max(fit-content, 100%);
   min-height: fit-content;
   /* height: 100%; */
-  height: fit-content !important;
+  /* height: fit-content !important; */
   transform: translateX(110%) !important;
 }
 

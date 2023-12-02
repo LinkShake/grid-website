@@ -158,6 +158,7 @@ export default function Home() {
           style={{
             maxWidth: "100%",
             overflow: "hidden",
+            // overflowY: "auto",
           }}
         >
           <div

@@ -184,7 +184,7 @@ export default function Home() {
                 mental illness, using binaural audio and striking visuals to
                 depict {"Senua's"} hallucinations. The narrative, infused with
                 psychological horror, creates an immersive and emotionally
-                resonant gaming experience that leaves a lasting impact.
+                resonant gaming experience, leaving a lasting impact.
               </p>
             </div>
             <div id="second-bottom">

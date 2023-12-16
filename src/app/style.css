@@ -190,12 +190,19 @@ body::-webkit-scrollbar {
   } */
 }
 
+@media (max-height: 1010px) and (min-width: 900px) {
+  .container {
+    grid-auto-rows: 3fr 2fr 21rem 25rem 3fr;
+  }
+}
+
 @media (min-height: 1025px) and (orientation: landscape) {
   .container {
     /* background-color: blue; */
     grid-auto-rows: 8rem 5rem 30rem 30rem 5rem;
     /* background-color: blue; */
     height: fit-content;
+    /* background-color: red; */
   }
 
   #first-top,
